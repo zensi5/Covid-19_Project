@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <!-- <script src="min.js"></script> -->
+  <script src="js/script.js"></script>
+
+  <title>My First Page</title>
+</head>
+<body ng-app="myApp" ng-controller="myCtrl"></body>
+<!-- navbar starts -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="nav"  >
+      <a class=" navbar-brand" href="#" >COVID-19</a>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="#home">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#protect">How to Protect</a>
+      </li>
+    
+    </ul>
+  </div>
+  </div>
+</nav>
+<!-- navbar ends -->
+
+
+  <div class="container" id="home">
+    <div class="jumbotron py-5 " >
+      <h1 class="text-center">{{title}}</h1>
+      <p class="pt-3">
+        Coronaviruses are a type of virus. There are many different kinds, and some cause disease. A coronavirus
+        identified in 2019, SARS-CoV-2, has caused a pandemic of respiratory illness, called COVID-19.The coronavirus is
+        spread through droplets and virus particles released into the air when an infected person breathes, talks,
+        laughs, sings, coughs or sneezes.This is why mask-wearing, hand hygiene and physical distancing are essential to
+        preventing COVID-19.
+      </p>
+      <!-- all daata -->
+      <div class="row text-center" >
+        <div class="col-md-4">
+          <div class="card bg-warning text-black rounded-circle ">
+            <div class="card-body ">
+              <h3>Confirmed Cases</h3>
+              <h3>{{all_data.todayCases}}</h3>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card bg-success text-black rounded-circle">
+            <div class="card-body">
+              <h3>Recovered Cases</h3>
+              <h3>{{all_data.todayRecovered}}</h3>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card bg-danger text-black rounded-circle">
+            <div class="card-body">
+              <h3>Death Cases</h3>
+              <h3>{{all_data.todayDeaths}}</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end all data -->
+
+
+      <input type="text" class="form-control mt-4" placeholder="Enter Country here" ng-model="c"
+        ng-change="get_c_data()" />
+      <!-- start c data -->
+      <div class="container-fluid" ng-if="c_data">
+        <h1 class="text-center mt-4 text-uppercase">{{c}} Status</h1>
+        <div class="row text-center mt-4 " ng-if="c_data">
+          <div class="col-md-4">
+            <div class="card bg-warning text-black">
+              <div class="card-body">
+                <h3>Confirmed Cases</h3>
+                <h3>{{c_data.todayCases}}</h3>
+              </div>
+            </div>
+
+          </div>
+          <div class="col-md-4">
+            <div class="card bg-success text-black">
+              <div class="card-body">
+                <h3>Recovered Cases</h3>
+                <h3>{{c_data.todayRecovered}}</h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 border-light mb-3" >
+            <div class="card bg-danger text-black">
+              <div class="card-body">
+                <h3>Death Cases</h3>
+                <h3>{{c_data.todayDeaths}}</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- end c data -->
+    </div>
+  </div>
+
+  <!-- how to pro starts -->
+
+  <div class="container main" id="protect">
+    <div class="row">
+      <div class="col">
+        <h1 style="  font-size: 50px"> HOW TO STAY HEALTHY DURING COVID19 </h1>
+        <h3>You can take several precautions to protect yourself and loved ones from the novel coronavirus.</h3>
+      </div>
+
+      <div class="col" >
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Wash Your Hands Frequently
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+            <ul>
+              <li class="dropdown-item idea">Use hand sanitisers when you cannot use soap</li>
+              <li class="dropdown-item">Wash your hands as frequently as you can, especially before and <br> after meals, OR
+                after coughing or sneezing</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Avoid Going To Public Places
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+            <ul>
+              <li class="dropdown-item">Wear a face mask or covering when you are not in your home.</li>
+              <li class="dropdown-item">Avoid crowded places, particularly indoors, and events that are  <br> likely to draw crowds</li>
+                
+            </ul>
+          </div>
+        </div>
+        
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Stay Home If You’re Unwell
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+            <ul>
+              <li class="dropdown-item">It is important to separate yourself from others (isolate) if you <br>  feel sick or test positive, so you do not spread the virus to  <br> others. </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+          Practice Respiratory Hygiene
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+            <ul>
+              <li class="dropdown-item">Covering your mouth and nose with your bent elbow or tissue when <br>  you cough or sneeze. Then dispose of the used tissue immediately. </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Clean & Disinfect Your Home
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            
+            <ul>
+              <li class="dropdown-item"> anytime items or people come in and out of your home, there’s some <br>  possibility of exposure. </li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+ 
+    </div>
+  </div>
+  <!-- how to pro ends -->
+  <footer > 
+    <p class="text-center">
+      Corona Case Details website &copy; 2022
+        </p>
+       
+      </footer>
+</body>
+</html>
